@@ -36,13 +36,19 @@ axes = axes.flatten()
 
 for i, t in enumerate(save_times):
     pos = snapshots[t]
-    axes[i].scatter(pos[:, 0], pos[:, 1], s=1, alpha=0.5)
+    axes[i].scatter(
+    pos[:, 0], pos[:, 1],
+    s=1,
+    alpha=0.5,
+    color="blue"
+)
     axes[i].set_title(f"Time: {t} s")
     axes[i].set_xlabel("x")
     axes[i].set_ylabel("y")
     axes[i].set_xlim([0, 25])
     axes[i].set_ylim([-5, 5])
     axes[i].grid(True)
+    
 
 plt.tight_layout()
 plt.show()
@@ -114,7 +120,7 @@ contour_plot = None
 
 for i, t in enumerate(save_times):
     C = concentration_fields[t]
-    contour_plot = axes[i].contourf(Xg, Yg, C, levels=30, cmap="Reds", vmin=vmin, vmax=vmax)
+    contour_plot = axes[i].contourf(Xg, Yg, C, levels=30, cmap="Blues", vmin=vmin, vmax=vmax)
     axes[i].set_title(f"Concentration at t = {t} s")
     axes[i].set_xlabel("x")
     axes[i].set_ylabel("y")
