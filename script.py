@@ -69,21 +69,13 @@ y_vals = np.linspace(-5, 5, ny)
 Xg, Yg = np.meshgrid(x_vals, y_vals)
 
 def gaussian_kernel_2d(dx, dy, epsilon):
-    """
-    2D Gaussian approximation of the Dirac delta:
-    δε(x) = 1/(2*pi*epsilon^2) * exp(-(dx^2 + dy^2)/(2*epsilon^2))
-    """
     r2 = dx**2 + dy**2
     return (1.0 / (2.0 * np.pi * epsilon**2)) * np.exp(-r2 / (2.0 * epsilon**2))
 
 def estimate_concentration(particle_positions, Xg, Yg, epsilon):
-    """
-    Estimate concentration field C(x,y,t) from particle positions
-    using the Monte Carlo kernel formula.
+
+    # Estimate concentration field C(x,y,t) from particle positions
     
-    particle_positions: array of shape (N, 2)
-    returns: C of shape (ny, nx)
-    """
     N = particle_positions.shape[0]
     C = np.zeros_like(Xg)
 
